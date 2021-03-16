@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:text_tools/core/theme/app_colors.dart';
 import 'package:text_tools/core/theme/app_typography.dart';
 
 class TextFieldComponent extends StatelessWidget {
@@ -17,8 +18,20 @@ class TextFieldComponent extends StatelessWidget {
       children: [
         Container(
           color: Colors.white,
-          child: Expanded(
+          child: Theme(
+            data: ThemeData(
+              focusColor: AppColors.buttonColor,
+            ),
             child: TextField(
+              cursorColor: AppColors.buttonColor,
+              decoration: InputDecoration(
+                border: UnderlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.buttonColor),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.buttonColor),
+                ),
+              ),
               controller: controller,
               keyboardType: TextInputType.multiline,
               maxLines: 8,
@@ -39,7 +52,7 @@ class TextFieldComponent extends StatelessWidget {
                 'Clear',
                 style: AppTypography.clearTextButton(context),
               ),
-              color: Colors.red,
+              color: AppColors.buttonColor,
             ),
           ),
         ),

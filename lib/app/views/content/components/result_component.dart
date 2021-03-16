@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:text_tools/app/controllers/app_controller.dart';
+import 'package:text_tools/core/theme/app_colors.dart';
 import 'package:text_tools/core/theme/app_typography.dart';
 
 class ResultComponent extends StatelessWidget {
@@ -21,6 +22,7 @@ class ResultComponent extends StatelessWidget {
           color: Colors.white,
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Consumer<AppController>(
                   builder: (_, appController, child) =>
@@ -43,7 +45,7 @@ class ResultComponent extends StatelessWidget {
                 'Copy',
                 style: AppTypography.copyTextButton(context),
               ),
-              color: Colors.green,
+              color: AppColors.buttonColor,
             ),
           ),
         )

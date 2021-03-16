@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static Color get primaryColor => Color(0xFF96F3E3);
-  static Color get secondaryColor => Color(0xFFC7EFFC);
-  static Color get unfocusColor => Color(0xFFC4C4C4);
+  static Color get primaryColor => Color(0xFFCFD8DC);
+  static Color get secondaryColor => Color(0xFF9EA7AA);
+  static Color get unfocusColor => Color(0xFFFFFFFF);
+  static Color get buttonColor => Color(0xFF263238);
 }

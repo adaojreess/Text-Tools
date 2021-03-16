@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppTypography {
   static TextStyle? toolsText(BuildContext context) {
-    return Theme.of(context).textTheme.headline6;
+    return Theme.of(context).textTheme.headline6!.copyWith(
+          color: Colors.black,
+        );
   }
 
   static TextStyle? toolsSelectedText(BuildContext context) {
