@@ -3,7 +3,7 @@ import 'package:text_tools/core/utils.dart';
 
 class AppController with ChangeNotifier {
   String text = '';
-  void toUpperCase(String value, {bool notifier = true}) {
+  void changeText(String value, {bool notifier = true}) {
     switch (textToolType) {
       case 'Text to lowercase':
         text = value.toLowerCase();
@@ -39,8 +39,9 @@ class AppController with ChangeNotifier {
   String textToolType = textTools.first;
 
   void changeTextTool(String value) {
+    if (value == textToolType) return;
     textToolType = value;
-    toUpperCase(text, notifier: false);
+    changeText(text, notifier: false);
     notifyListeners();
   }
 

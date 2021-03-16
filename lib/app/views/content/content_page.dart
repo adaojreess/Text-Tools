@@ -21,7 +21,7 @@ class _ContentPageState extends State<ContentPage> {
     super.initState();
     controller.addListener(() {
       Provider.of<AppController>(context, listen: false)
-          .toUpperCase(controller.text);
+          .changeText(controller.text);
     });
   }
 
