@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:text_tools/app/controllers/app_controller.dart';
 import 'package:text_tools/core/theme/app_colors.dart';
@@ -40,7 +41,15 @@ class ResultComponent extends StatelessWidget {
             height: size.height * .05,
             width: size.width * .15,
             child: FlatButton(
-              onPressed: () {},
+              onPressed: () {
+                Clipboard.setData(ClipboardData(
+                  text: Provider.of<AppController>(context, listen: false).text,
+                ));
+
+                Scaffold.of(context).showSnackBar(SnackBar(
+                  content: Text('Copied to the clipboard'),
+                ));
+              },
               child: Text(
                 'Copy',
                 style: AppTypography.copyTextButton(context),
