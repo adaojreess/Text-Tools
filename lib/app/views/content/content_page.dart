@@ -13,15 +13,7 @@ class ContentPage extends StatefulWidget {
 }
 
 class _ContentPageState extends State<ContentPage> {
-  String _currentTexTool = textTools.first;
   final controller = TextEditingController();
-
-  void changeCurrentTextTool(String value) {
-    setState(() {
-      if (_currentTexTool == value) return;
-      _currentTexTool = value;
-    });
-  }
 
   @override
   void initState() {
@@ -40,9 +32,7 @@ class _ContentPageState extends State<ContentPage> {
         color: AppColors.secondaryColor,
         child: Row(
           children: [
-            MenuComponent(
-                currentTextTools: _currentTexTool,
-                changeCurrentTextTool: changeCurrentTextTool),
+            MenuComponent(),
             Expanded(
               child: Container(
                 height: size.height,
