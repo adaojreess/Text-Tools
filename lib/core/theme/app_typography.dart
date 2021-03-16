@@ -15,4 +15,11 @@ class AppTypography {
       color: Colors.white,
     );
   }
+
+  static TextStyle? copyTextButton(BuildContext context) {
+    return toolsText(context)!.copyWith(
+      fontWeight: FontWeight.w300,
+      color: Colors.white,
+    );
+  }
 }

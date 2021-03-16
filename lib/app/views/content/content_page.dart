@@ -5,6 +5,7 @@ import 'package:text_tools/core/theme/app_colors.dart';
 import 'package:text_tools/core/utils.dart';
 
 import 'components/menu_component.dart';
+import 'components/result_component.dart';
 import 'components/text_field_component.dart';
 
 class ContentPage extends StatefulWidget {
@@ -45,17 +46,7 @@ class _ContentPageState extends State<ContentPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextFieldComponent(controller: controller),
-                    Container(
-                      height: size.height * 0.25,
-                      width: double.infinity,
-                      color: Colors.white,
-                      child: Expanded(
-                        child: Consumer<AppController>(
-                          builder: (_, appController, child) =>
-                              Text(appController.text),
-                        ),
-                      ),
-                    ),
+                    ResultComponent(),
                   ],
                 ),
               ),
