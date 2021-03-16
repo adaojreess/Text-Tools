@@ -6,6 +6,13 @@ class AppTypography {
   }
 
   static TextStyle? toolsSelectedText(BuildContext context) {
-    return toolsText(context)!.copyWith(fontWeight: FontWeight.bold);
+    return toolsText(context)!.copyWith(fontWeight: FontWeight.w700);
+  }
+
+  static TextStyle? clearTextButton(BuildContext context) {
+    return toolsText(context)!.copyWith(
+      fontWeight: FontWeight.w300,
+      color: Colors.white,
+    );
   }
 }

@@ -33,7 +33,7 @@ class MenuComponent extends StatelessWidget {
                 tool: tool,
                 onTap: changeCurrentTextTool,
                 isActive: tool == currentTextTools,
-              ),
+              )
             )
             .toList(),
         Spacer(),

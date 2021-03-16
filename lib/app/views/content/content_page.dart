@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:text_tools/app/controllers/app_controller.dart';
 import 'package:text_tools/core/theme/app_colors.dart';
 import 'package:text_tools/core/utils.dart';
 
 import 'components/menu_component.dart';
+import 'components/text_field_component.dart';
 
 class ContentPage extends StatefulWidget {
   @override
@@ -11,11 +14,21 @@ class ContentPage extends StatefulWidget {
 
 class _ContentPageState extends State<ContentPage> {
   String _currentTexTool = textTools.first;
+  final controller = TextEditingController();
 
   void changeCurrentTextTool(String value) {
     setState(() {
       if (_currentTexTool == value) return;
       _currentTexTool = value;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    controller.addListener(() {
+      Provider.of<AppController>(context, listen: false)
+          .toUpperCase(controller.text);
     });
   }
 
@@ -28,14 +41,33 @@ class _ContentPageState extends State<ContentPage> {
         child: Row(
           children: [
             MenuComponent(
-              currentTextTools: _currentTexTool,
-              changeCurrentTextTool: changeCurrentTextTool,
-            ),
+                currentTextTools: _currentTexTool,
+                changeCurrentTextTool: changeCurrentTextTool),
             Expanded(
               child: Container(
                 height: size.height,
                 width: size.width * .33,
                 color: AppColors.secondaryColor,
+                margin:
+                    EdgeInsets.symmetric(horizontal: (size.width * 0.33) / 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextFieldComponent(controller: controller),
+                    Container(
+                      height: size.height * 0.25,
+                      width: double.infinity,
+                      color: Colors.white,
+                      child: Expanded(
+                        child: Consumer<AppController>(
+                          builder: (_, appController, child) =>
+                              Text(appController.text),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
