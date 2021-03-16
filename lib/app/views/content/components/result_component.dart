@@ -19,12 +19,15 @@ class ResultComponent extends StatelessWidget {
           height: size.height * 0.25,
           width: double.infinity,
           color: Colors.white,
-          child: Column(
-            children: [
-              Consumer<AppController>(
-                builder: (_, appController, child) => Text(appController.text),
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Consumer<AppController>(
+                  builder: (_, appController, child) =>
+                      Text(appController.text),
+                ),
+              ],
+            ),
           ),
         ),
         Padding(

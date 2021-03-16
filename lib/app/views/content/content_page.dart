@@ -14,17 +14,7 @@ class ContentPage extends StatefulWidget {
 }
 
 class _ContentPageState extends State<ContentPage> {
-  final controller = TextEditingController();
-
   @override
-  void initState() {
-    super.initState();
-    controller.addListener(() {
-      Provider.of<AppController>(context, listen: false)
-          .changeText(controller.text);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -45,7 +35,10 @@ class _ContentPageState extends State<ContentPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextFieldComponent(controller: controller),
+                    TextFieldComponent(
+                        controller:
+                            Provider.of<AppController>(context, listen: false)
+                                .textController),
                     SizedBox(height: size.height * .1),
                     ResultComponent(),
                   ],

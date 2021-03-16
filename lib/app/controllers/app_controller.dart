@@ -2,33 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:text_tools/core/utils.dart';
 
 class AppController with ChangeNotifier {
+  final textController = TextEditingController();
+
+  AppController() {
+    textController.addListener(() {
+      changeText();
+    });
+  }
+
   String text = '';
-  void changeText(String value, {bool notifier = true}) {
+  void changeText({bool notifier = true}) {
     switch (textToolType) {
       case 'Text to lowercase':
-        text = value.toLowerCase();
+        text = textController.text.toLowerCase();
         break;
       case 'Text to camelCase':
-        text = _toCamelCase(value);
+        text = _toCamelCase(textController.text);
         break;
       case 'Text to kebab-case':
-        text = _toKebabCase(value);
+        text = _toKebabCase(textController.text);
         break;
       case 'Text to snake_case':
-        text = _toSnakeCase(value);
+        text = _toSnakeCase(textController.text);
         break;
       case 'Text to Title Case':
-        text = _toTitleCase(value);
+        text = _toTitleCase(textController.text);
         break;
       case 'Capitalize text':
-        text = _capitalize(value);
+        text = _capitalize(textController.text);
         break;
       case 'Invert Text Case':
-        text = _toInvertCase(value);
+        text = _toInvertCase(textController.text);
         break;
       case 'Text to UPPERCASE':
       default:
-        text = value.toUpperCase();
+        text = textController.text.toUpperCase();
         break;
     }
     if (notifier) {
@@ -41,7 +49,7 @@ class AppController with ChangeNotifier {
   void changeTextTool(String value) {
     if (value == textToolType) return;
     textToolType = value;
-    changeText(text, notifier: false);
+    changeText(notifier: false);
     notifyListeners();
   }
 
