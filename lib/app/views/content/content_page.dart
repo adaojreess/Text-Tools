@@ -46,6 +46,7 @@ class _ContentPageState extends State<ContentPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextFieldComponent(controller: controller),
+                    SizedBox(height: size.height * .1),
                     ResultComponent(),
                   ],
                 ),
