@@ -26,11 +26,19 @@ class ToolTextItemComponent extends StatelessWidget {
         onTap: () => Provider.of<AppController>(context, listen: false)
             .changeTextTool(tool),
         child: Consumer<AppController>(
-          builder: (_, appController, child) => Text(
-            tool,
-            style: appController.textToolType == tool
-                ? AppTypography.toolsSelectedText(context)
-                : AppTypography.toolsText(context),
+          builder: (_, appController, child) => Row(
+            children: [
+              Text(
+                tool,
+                style: appController.textToolType == tool
+                    ? AppTypography.toolsSelectedText(context)
+                    : AppTypography.toolsText(context),
+              ),
+              Spacer(),
+              appController.textToolType == tool
+                  ? Icon(Icons.arrow_back_ios_outlined, size: 30)
+                  : SizedBox()
+            ],
           ),
         ),
       ),
