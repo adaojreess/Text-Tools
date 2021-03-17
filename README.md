@@ -1,6 +1,8 @@
 # text_tools
 
-A new Flutter project.
+Um projeto Flutter
+
+Abra a aplicação web clicando [aqui](https://text-tools-feef3.web.app/)
 
 ## Getting Started
 
